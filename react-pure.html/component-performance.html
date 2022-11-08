@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <style>
+            .bend{
+                font-style: italic;
+            }
+            .betterview{
+                border:1px solid;
+                margin:10px;
+                padding:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script type="text/babel">
+            var Task = React.memo(function(props){
+                            React.useEffect(()=>{
+                                console.log("Task Component rendered")
+                            })
+                                            return(
+                                                <li>
+                                                    {props.t}
+                                                    <button>Delete</button>
+                                                    <button>Edit</button>
+                                                    <button>Done</button>
+                                                    <button>Undo</button>
+                                                </li>
+                                            )
+            })
+            var Todolist=React.memo(function(){
+                var [todos,settodos] = React.useState(['asd','sdjfhg'])
+                var [newtask,setnewtask] = React.useState('');
+                var myref = React.useRef();
+                var bref = React.useRef();
+                function addTask(){
+                    settodos([...todos,newtask])
+                }
+                React.useEffect(()=>{
+                    //console.log("Todolist rendered")
+                    myref.current.focus();
+                })
+                function checkEnter(e){
+                    if(e.key==='Enter'){
+                        bref.current.focus();
+                    }
+                }
+                return(
+                    <div className='betterview'>
+                        <input type="text" onChange={(e)=>{setnewtask(e.target.value)}} ref={myref} onKeyUp={checkEnter}/>
+                        <button onClick={addTask} ref={bref}>Add Task</button>
+                        <ul>
+                            {
+                                todos.map((t,i)=>{
+                                    return (
+                                           <Task t={t}></Task> 
+                                    )
+                                })
+                            }
+                        </ul>
+                    </div>
+                )
+            })
+            function Parent(){
+                var [count,setcount] = React.useState(0);
+                function inc(){
+                    setcount(count+1)
+                }
+                function dec(){
+                    setcount(count-1)
+                }
+                return(
+                    <div className="betterview">
+                        <h1>Count:{count}</h1>
+                        <button onClick={inc}>Inc</button>
+                        <button onClick={dec}>Dec</button>
+                        <Todolist></Todolist>
+                    </div>
+                )
+            }
+            ReactDOM.render(<Parent></Parent>,document.getElementById('root'))
+        </script>
+    </body>
+</html>

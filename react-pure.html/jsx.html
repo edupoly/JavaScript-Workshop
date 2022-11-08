@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <style>
+            .bend{
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>This is created by html</h1>
+        <div id="root"></div>
+        <div id="abcd"></div>
+        <script type="text/babel">
+            var students = ['sowmya','mona','bikram','divya','manju']
+            var rh1 = React.createElement('h1',null,"this is created by react")
+            ReactDOM.render(rh1,document.getElementById('root'))
+            var time=21;
+            var x = <h1 style={time>18?{backgroundColor:'lightgrey'}:{backgroundColor:'yellow'}} className={time<18?'bend':''}>
+                        this is created by jsx { 123+234 } 
+                        {
+                            students.map((s)=>{
+                                return (<li>{s}</li>)
+                            })
+                        }
+                    </h1>
+            ReactDOM.render(x,document.getElementById('abcd'))
+        </script>
+    </body>
+</html>

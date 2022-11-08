@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <script>
+            function sub(a,b){
+                return a-b;
+            }
+
+            var res2 = add(23,34);
+            console.log(res2)
+
+            function add(a,b,c){
+                var res;
+                res = a+b;
+                c(res)
+            }
+
+            add(12,23,function(r){console.log(r)})
+        </script>
+    </body>
+</html>

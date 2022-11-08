@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <style>
+            .bend{
+                font-style: italic;
+            }
+            .betterview{
+                border:1px solid;
+                margin:10px;
+                padding:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script type="text/babel">
+            function StudentTable(){
+                var [students,setStudents]=React.useState([])
+                function addStudent(){
+                    var newStudent = {
+                        firstname:document.getElementById('fn').value,
+                        lastname:document.getElementById('ln').value,
+                        age:document.getElementById('age').value,
+                    }
+                    setStudents([...students,newStudent])
+                }
+                function sortBy(key){
+                    var temp = [...students]
+                    temp.sort((a,b)=>{
+                        if(a[key]>b[key]){
+                            return 1
+                        }
+                        else{
+                            return -1
+                        }
+                    })
+                    setStudents([...temp])
+                }
+                return(
+                    <div className="betterview">
+                        <input type="text" id='fn'/><br/>
+                        <input type="text" id='ln'/><br/>
+                        <input type="text" id='age'/><br/>
+                        <button onClick={addStudent}>Add Student</button>
+                        <table border='2' cellspacing='0' cellpadding='10'>
+                            <thead>
+                                <th onClick={()=>{sortBy('firstname')}}>Firstname</th>
+                                <th onClick={()=>{sortBy('lastname')}}>Lastname</th>
+                                <th onClick={()=>{sortBy('age')}}>Age</th>
+                            </thead>
+                            <tbody>
+                                {
+                                    students.map((student,i)=>{
+                                        return(
+                                            <tr>
+                                                <td>{student.firstname}</td>
+                                                <td>{student.lastname}</td>
+                                                <td>{student.age}</td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                )
+            }
+            function Collage(){
+                return(
+                    <div className="betterview">
+                        <StudentTable></StudentTable>
+                        <StudentTable></StudentTable>
+                    </div>
+                )
+            }
+            ReactDOM.render(<Collage></Collage>,document.getElementById('root'))
+        </script>
+    </body>
+</html>

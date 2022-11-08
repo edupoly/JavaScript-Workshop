@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <style>
+            .bend{
+                font-style: italic;
+            }
+            .betterview{
+                border:1px solid;
+                margin:10px;
+                padding:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script type="text/babel">
+
+            var Y = function(){
+                //data
+                var [students,setStudents] = React.useState(['ravi','anu','balu','giri','vasu','sai'])
+                //logic
+                function addStudent(){
+                    var newstudent = document.getElementById('d1').value;
+                    setStudents([...students,newstudent])
+                }
+
+                function deleteStudent(id){
+                    var temp = [...students];
+                    temp.splice(id,1);
+                    setStudents([...temp])
+                }
+                
+                return( <div className='betterview'>
+                            Best Every Place Possible to Have Fun...
+                            <br/>
+                            <input type="text" id='d1'/>
+                            <button onClick={addStudent}>Add Student</button>
+                            {
+                                students.map((s,i)=>{
+                                    return (
+                                        <li>
+                                            {s}
+                                            <button onClick={()=>{deleteStudent(i)}}>Delete</button>
+                                        </li>
+                                    )
+                                })
+                            }
+                        </div>
+                )
+            }//Y is a component
+            ReactDOM.render(<Y></Y>,document.getElementById('root'))
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+    <head></head>
+    <body>
+        <script>
+            function div(a,b){
+                var p = new Promise(function(resolve,reject){
+                    if(b===0){
+                        setTimeout(function(){
+                            reject("Deno cannot be ZERO... careful")
+                        },5000)
+                    }
+                    else{
+                        setTimeout(function(){
+                            resolve(a/b)
+                        },5000)
+                    }
+                });
+                return p
+            }
+            var x = div(12,3).then(function(res){console.log(res)}).catch(function(err){console.log(err)})
+            console.log(x);
+            console.log('last line');
+        </script>
+    </body>
+</html>

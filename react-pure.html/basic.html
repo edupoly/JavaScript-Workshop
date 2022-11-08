@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <style>
+            .bend{
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>This is created by html</h1>
+        <div id="dd"></div>
+        <div id="root"></div>
+        <div id="fav"></div>
+        <script>
+            var img = "https://c.ndtvimg.com/2022-06/nl3eoabo_deepika-padukone_625x300_13_June_22.jpg";
+            var dogs = ['husky','pug','retriver','pitbull']
+            var newh1 = document.createElement("h1")
+            newh1.innerHTML='This is created my javascript';
+            newh1.style.backgroundColor='lightgreen';
+            newh1.style.color='indianred';
+            newh1.classList.add('bend')
+            document.getElementById('dd').appendChild(newh1);
+
+            var myimg = document.createElement("img");
+            myimg.src = img;
+            myimg.style.width='200px';
+            document.getElementById('dd').appendChild(myimg)
+
+            var rimg = React.createElement("img",{src:img,width:'250px'},null)
+            ReactDOM.render(rimg,document.getElementById('fav'))
+
+            var rh1 = React.createElement(      "h1",
+                                                {
+                                                    style:{
+                                                        backgroundColor:'grey'
+                                                    },
+                                                    class:"bend"
+                                                },
+                                                (
+                                                    "This is created by reactjs",
+                                                    dogs.map((d)=>{
+                                                        return React.createElement("li",null,(d))
+                                                    })
+                                                ));
+            ReactDOM.render(rh1,document.getElementById("root"))
+        </script>
+    </body>
+</html>

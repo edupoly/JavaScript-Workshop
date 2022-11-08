@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <style>
+            .bend{
+                font-style: italic;
+            }
+            .betterview{
+                border:1px solid;
+                margin:10px;
+                padding:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script type="text/babel">
+            var Task = React.memo(function(props){
+                console.log(props.task," rendered")
+                return(
+                    <li style={{border:'1px solid',padding:'10px',margin:'10px'}}>
+                        {props.task}
+                        <button onClick={()=>{props.delTask(props.id)}}>Delete</button>
+                    </li>
+                )
+            })
+            
+            function Todolist(){
+                const [todolist,setTodolist] = React.useState(['complete testing examples','relax','play','listen to music']);
+                function addTask(){
+                    var newtask = document.getElementById("d1").value;
+                    setTodolist([...todolist,newtask])
+                }
+                function deleteTask(id){
+                    var temp = [...todolist];
+                    temp.splice(id,1);
+                    setTodolist([...temp])
+                }
+                return(
+                    <div className="betterview">
+                        <input type="text" id='d1' />
+                        <button onClick={addTask}>Add Task</button>
+                        <ul>
+                            {
+                                todolist.map((t,i)=>{
+                                    return(
+                                        <Task task={t} id={i}></Task>
+                                    )
+                                })
+                            }
+                        </ul>
+                    </div>
+                )
+            }
+            ReactDOM.render(<Todolist></Todolist>,document.getElementById('root'))
+        </script>
+    </body>
+</html>
+<!-- 
+    state
+    props
+ -->

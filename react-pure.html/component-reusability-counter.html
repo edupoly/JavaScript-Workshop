@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <style>
+            .bend{
+                font-style: italic;
+            }
+            .betterview{
+                border:1px solid;
+                margin:10px;
+                padding:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 title="this is first hello element" >Hello Elements</h1>
+        <h1 title="We want to see winning students">Hello Elements</h1>
+        <div id="root">
+
+        </div>
+        <script type="text/babel">
+            function Counter(props){
+                console.log("props:::::",props)
+                var[count,setcount]=React.useState(props.start);
+                function inc(){
+                    setcount(count+props.step)
+                }
+                function dec(){
+                    setcount(count-props.step)
+                }
+                return(
+                    <div className='betterview'>
+                        <h1>Count:{count}</h1>
+                        <button onClick={inc}>Inc</button>
+                        <button onClick={dec}>Dec</button>
+                    </div>
+                )
+            }
+            function X(){
+                return(
+                    <div>
+                        <Counter start={100} step={10}></Counter>
+                        <Counter start={200} step={50}></Counter>
+                    </div>
+                )
+            }
+            ReactDOM.render(<X></X>,document.getElementById('root'))
+        </script>
+    </body>
+</html>
+<!-- 
+    state
+    props
+ -->
