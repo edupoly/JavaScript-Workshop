@@ -1,19 +1,32 @@
 <html>
-    <body>
-        <script>
-            var a = '123';
-            console.log(typeof a);
-            var x = parseInt(a);
-            console.log(typeof x);
-            var y = Number(a);
-            console.log(typeof y)
+    <script>
+        var x = '123';
+        console.log(typeof x)
+        var y;
+        y = Number(x);
+        console.log(typeof y)
 
-            var d = '456abc9213';
-            var z = parseInt(d);
-            console.log(z)
+        var a = '1928.45';
+        var b;
+        b = parseInt(a);
+        console.log(typeof b)
+        console.log(b)
+        
+        var k = 112.34;
+        var s = parseInt(k);
+        console.log(s);
 
-            var s = Number(d);
-            console.log(s)
-        </script>
-    </body>
+        var e = '99.87praveen234';
+        var r = parseFloat(e);
+        console.log(r)
+    </script>
+
 </html>
+<!-- 
+    implisit typecasting
+        100-'23'
+    explisit typecasting
+        Number
+        parseInt
+        parseFloat
+ -->

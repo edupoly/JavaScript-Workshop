@@ -1,24 +1,37 @@
 <html>
-    <body>
-        <script>
-            var a = 123;
-            var b = 345;
-            var c = 245;
-            var d = 125;
-            var e = 443;
-            var f = 332;
+    <script>
+        var ar = [12,23,45,956,41,67,34,17,38];
+ 
 
-            var ar = [14,32,54,19,40,20]
+        // for(var i=0;i<=ar.length-1;i++)
+        // {
+        //     console.log(ar[i])
+        // }//prints all the array values from first to last
 
-            for(var i=ar.length-1;i>=0;i--){
-                console.log(ar[i])
+        // for(var j=ar.length-1;j>=0;j--){
+        //     console.log(ar[j])
+        // }//prints all the array values from last to first
+
+        // for(var k =0;k<=ar.length-1;k++){
+        //     if(ar[k]%2==0){
+        //         console.log(ar[k])
+        //     }
+        // }//print all even values of array
+
+        // var s = +prompt()
+        // for(var k =0;k<=ar.length-1;k++){
+        //     if(ar[k]>=s){
+        //         console.log(ar[k])
+        //     }
+        // }
+
+        var max = ar[0];
+
+        for(var k = 1;k<=ar.length-1;k++){
+            if(ar[k]>=max){
+                max = ar[k]
             }
-
-            var sum = 0;
-            for(var i=0;i<=ar.length-1;i++){
-               sum =sum +ar[i];
-            }         
-            console.log(sum);
-        </script>
-    </body>
+        }
+        console.log(max)
+    </script>
 </html>

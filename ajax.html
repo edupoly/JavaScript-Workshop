@@ -1,24 +1,28 @@
 <html>
+    <head></head>
     <body>
-        <ul id="dd">
-            
-        </ul>
+        <div>
+            <h1>Welcome to Ajax</h1>
+            <div id="dd">
+
+            </div>
+        </div>
         <script>
-            var httpObj = new XMLHttpRequest();
-            httpObj.open('GET','https://restcountries.com/v2/all');//prep
-            httpObj.send()
-            httpObj.onloadend = function(){
-                var coutries = JSON.parse(httpObj.response);
-                coutries.forEach(function(country,i){
-                    var newli = document.createElement('li');
-                    newli.innerHTML = country.name;
-                    var flagImg = document.createElement('img');
-                    flagImg.src=country.flag;
-                    flagImg.style.width='100px';
-                    newli.appendChild(flagImg)
-                    document.getElementById('dd').appendChild(newli)
-                });
+            var ob1 = new XMLHttpRequest();
+            console.dir(ob1)
+            ob1.open("GET","https://restcountries.com/v2/all");
+            console.log(ob1.readyState)
+            ob1.send()
+           
+            console.log(ob1.readyState)
+            ob1.onreadystatechange = function(){
+               if(ob1.readyState===4){
+                console.log(ob1.response)
+               }
+            }
+            ob1.onloadend=function(){
+                console.log(ob1.response)
             }
         </script>
     </body>
-</html>
+</html>0,1,2,3,4

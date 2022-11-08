@@ -1,20 +1,17 @@
 <html>
     <body>
         <script>
-            function sub(a,b){
-                return a-b;
-            }
+            
+            function abc(a){
+                console.log(a);
+            }//first class function
 
-            var res2 = add(23,34);
-            console.log(res2)
-
-            function add(a,b,c){
-                var res;
-                res = a+b;
-                c(res)
-            }
-
-            add(12,23,function(r){console.log(r)})
+            abc(100)
+            abc('prateek');
+            abc(false)
+            abc([12,23,45,67])
+            abc(function(){console.log('hello')})
+            //the function which is passed as an argument is called //callback function
         </script>
     </body>
 </html>
